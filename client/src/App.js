@@ -4,18 +4,23 @@ import Signup from "./components/Singup";
 import Login from "./components/Login";
 import TestTab from "./components/Table/TestTab";
 import Info from "./Info";
+import Homepage from "./components/homepage/Homepage";
+import Single from "./components/single/Single";
 
 function App() {
 	const user = localStorage.getItem("token");
 
 	return (
 		<Routes>
-			{user && <Route path="/" exact element={<Main />} />}
+			 <Route path="/" exact element={user ?<Main />:<Homepage/>} />
 			<Route path="/signup" exact element={<Signup />} />
 			<Route path="/login" exact element={<Login />} />
 			<Route path="/" element={<Navigate replace to="/login" />} />
-			<Route path="/test" element={<TestTab  />} />
-			<Route path="/info" element={<Info />} />
+			{ user && 	<Route path="/test" element={<TestTab  />} />}
+		{ user && 	<Route path="/info" element={<Info />} />}
+			<Route path="/post/:id" element={<Single />} />
+			{ user && <Route path="/oldhome" element={<Homepage />} />}
+
 		</Routes>
 	);
 }

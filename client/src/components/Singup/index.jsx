@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
+import Topbar from "../topbar/Topbar";
 
 const Signup = () => {
 	const [data, setData] = useState({
@@ -38,6 +39,9 @@ const Signup = () => {
   
 console.log(data,userType)
 	return (
+		<>
+		    <Topbar/>
+
 		<div className={styles.signup_container}>
 			<div className={styles.signup_form_container}>
 				<div className={styles.left}>
@@ -59,7 +63,7 @@ console.log(data,userType)
 							value={data.firstName}
 							required
 							className={styles.input}
-						/>
+							/>
 						<input
 							type="text"
 							placeholder="Last Name"
@@ -68,7 +72,7 @@ console.log(data,userType)
 							value={data.lastName}
 							required
 							className={styles.input}
-						/>
+							/>
 						<input
 							type="email"
 							placeholder="Email"
@@ -77,7 +81,7 @@ console.log(data,userType)
 							value={data.email}
 							required
 							className={styles.input}
-						/>
+							/>
 <select
   name="userType"
   onChange={(e) => setuserType(e.target.value)}
@@ -98,7 +102,7 @@ console.log(data,userType)
 							value={data.password}
 							required
 							className={styles.input}
-						/>
+							/>
 						{error && <div className={styles.error_msg}>{error}</div>}
 						<button type="submit" className={styles.green_btn}>
 							Sing Up
@@ -107,6 +111,7 @@ console.log(data,userType)
 				</div>
 			</div>
 		</div>
+							</>
 	);
 };
 

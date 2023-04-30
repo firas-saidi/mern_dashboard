@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
+import Topbar from "../topbar/Topbar";
 
 const Login = () => {
 	const [data, setData] = useState({ email: "", password: "" });
@@ -31,6 +32,9 @@ const Login = () => {
 	};
 	
 	return (
+		<>
+		    <Topbar/>
+
 		<div className={styles.login_container}>
 			<div className={styles.login_form_container}>
 				<div className={styles.left}>
@@ -44,7 +48,7 @@ const Login = () => {
 							value={data.email}
 							required
 							className={styles.input}
-						/>
+							/>
 						<input
 							type="password"
 							placeholder="Password"
@@ -53,7 +57,7 @@ const Login = () => {
 							value={data.password}
 							required
 							className={styles.input}
-						/>
+							/>
 						{error && <div className={styles.error_msg}>{error}</div>}
 						<button type="submit" className={styles.green_btn}>
 							Sing In
@@ -70,6 +74,7 @@ const Login = () => {
 				</div>
 			</div>
 		</div>
+							</>
 	);
 };
 
